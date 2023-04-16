@@ -1,4 +1,4 @@
-## Quorum Coding Challenge
+## Coding Challenge
 
 I made this to try to help a friend, using ruby `3.0.5p211`.
 
@@ -6,7 +6,7 @@ After installing ruby, run: `ruby services/legislator-votes-exporter.rb`
 
 ## Overview
 
-At Quorum, we collect and organize a large amount of publicly available government data. For example, we provide our clients the ability to visualize all of the bills that legislators voted for or against. To represent this data, we have the following important data models:
+We collect and organize a large amount of publicly available government data. For example, we provide our clients the ability to visualize all of the bills that legislators voted for or against. To represent this data, we have the following important data models:
 
 **Person** - An individual legislator elected to government. This includes everyone from President Joe Biden to Representative. David McKinley from West Virginia.
 
