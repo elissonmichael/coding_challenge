@@ -17,15 +17,15 @@ class Legislator < ApplicationModel
     @name = name
   end
 
-  def votes
-    @votes ||= VoteResult.all.select { |vote_result| vote_result.legislator_id == id }
+  def results
+    @results ||= VoteResult.all.select { |result| result.legislator_id == id }
   end
 
-  def supported_bills
-    votes.select { |vote| vote.vote_type == 1 }
+  def supports
+    results.select(&:support?)
   end
 
-  def opposed_bills
-    votes.select { |vote| vote.vote_type == 2 }
+  def oppositions
+    results.select(&:opposed?)
   end
 end

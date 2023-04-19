@@ -1,5 +1,4 @@
 require_relative 'application_model'
-require_relative 'vote'
 
 class VoteResult < ApplicationModel
   attr_reader :id, :legislator_id, :vote_id, :vote_type
@@ -19,7 +18,11 @@ class VoteResult < ApplicationModel
     @vote_type = vote_type
   end
 
-  def vote
-    Vote.find(vote_id)
+  def support?
+    vote_type == 1
+  end
+
+  def opposed?
+    vote_type == 2
   end
 end

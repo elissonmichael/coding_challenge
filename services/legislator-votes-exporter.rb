@@ -17,7 +17,7 @@ class LegislatorVoterExporter
   private
 
   def convert_to_row(legislator)
-    [legislator.id, legislator.name, legislator.supported_bills.size, legislator.opposed_bills.size]
+    [legislator.id, legislator.name, legislator.supports.size, legislator.oppositions.size]
   end
 end
 
