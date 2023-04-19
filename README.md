@@ -2,7 +2,10 @@
 
 I made this to try to help a friend, using ruby `3.0.5p211`.
 
-After installing ruby, run: `ruby services/legislator-votes-exporter.rb`
+After installing ruby, run: 
+
+- `ruby services/legislator-votes-exporter.rb`
+- `ruby services/legislator-bills-exporter.rb`
 
 ## Overview
 
@@ -37,13 +40,23 @@ You will be provided with a dataset comprised of the following four files:
 You will be provided with a list of legislators, bills, votes, and vote results as specified above. You’ll be asked to answer the following questions:
 
 1. For every legislator in the dataset, how many bills did the legislator support (voted for the bill)? How many bills did the legislator oppose?
-2. For every bill in the dataset, how many legislators
+2. For every bill in the dataset, how many legislators supported the bill? How many legislators opposed the bill? Who was the primary sponsor of the bill?
 
 Your program should take in the data provided and output a CSV for each of the questions in Part 1. For example, you might name the first file *legislators-support-oppose-count.csv*.
 
 | Field  | Type | Description
 | ------------- | ------------- | ------------- |
-| id | integer  | The id of the legislator  |
-| name  | string  | The name of the legislator  |
-| num_supported_bills  | integer  | The number of bills the legislator voted Yea on from the dataset  |
-| num_opposed_bills  | integer  | The number of bills the legislator voted Nay on from the dataset  |
+| id | integer | The id of the legislator |
+| name  | string | The name of the legislator |
+| num_supported_bills | integer | The number of bills the legislator voted Yea on from the dataset |
+| num_opposed_bills | integer | The number of bills the legislator voted Nay on from the dataset |
+
+You might name the second file *bills.csv*. Each row in this CSV should represent a bill and have the following columns:
+
+| Field  | Type | Description
+| ------------- | ------------- | ------------- |
+| id | integer | The id of the bill |
+| title  | string | The title of the bill |
+| supporter_count | integer | The number of legislators that supported this bill in the vote for it |
+| opposer_count | integer | The number of legislators that opposed this bill in the vote for it |
+| primary_sponsor | string | The name of the primary sponsor of the bill. If the name of the sponsor is not available in the dataset, the cell should be “Unknown”  |
