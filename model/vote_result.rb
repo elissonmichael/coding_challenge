@@ -12,6 +12,7 @@ class VoteResult < ApplicationModel
   end
 
   def initialize(id, legislator_id, vote_id, vote_type)
+    super()
     @id = id
     @legislator_id = legislator_id
     @vote_id = vote_id

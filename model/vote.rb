@@ -11,8 +11,9 @@ class Vote < ApplicationModel
   def self.all
     read.map { |row| new(row[:id], row[:bill_id]) }
   end
- 
+
   def initialize(id, bill_id)
+    super()
     @id = id
     @bill_id = bill_id
   end

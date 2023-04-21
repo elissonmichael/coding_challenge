@@ -13,6 +13,7 @@ class Legislator < ApplicationModel
   end
 
   def initialize(id, name)
+    super()
     @id = id
     @name = name
   end

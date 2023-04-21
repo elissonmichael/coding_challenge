@@ -14,6 +14,7 @@ class Bill < ApplicationModel
   end
 
   def initialize(id, title, sponsor_id)
+    super()
     @id = id
     @title = title
     @sponsor_id = sponsor_id
