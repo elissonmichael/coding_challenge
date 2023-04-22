@@ -19,7 +19,7 @@ class Vote < ApplicationModel
   end
 
   def results
-    @results = VoteResult.all.select { |result| result.vote_id == id }
+    @results = VoteResult.filter_by(column: :vote_id, value: id)
   end
 
   def supports

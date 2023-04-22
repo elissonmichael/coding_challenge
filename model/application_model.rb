@@ -12,4 +12,8 @@ class ApplicationModel
   def self.find_by(column:, value:)
     all.find { |resource| resource.send(column) == value }
   end
+
+  def self.filter_by(column:, value:)
+    all.select { |resource| resource.send(column) == value }
+  end
 end
