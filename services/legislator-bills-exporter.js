@@ -1,10 +1,10 @@
-import VoteResult from "../model/vote_result.js";
+import Bill from "../model/bill.js";
 import fs from "fs";
 
 class BillsExporter {
   constructor(filename) {
     this.filename = filename;
-    this.header = ["id", "voteType"];
+    this.header = ["id", "title", "primary_sponsor"];
   }
 
   execute() {
@@ -17,16 +17,19 @@ class BillsExporter {
   }
 
   async convertToCSV() {
-    return this.dataArrays().then(arrays => 
-      [this.header].concat(arrays).map(arr => arr.join(',')).join('\r\n')
-    );
+    const arrays = await this.dataArrays();
+    return [this.header].concat(arrays).map(arr => arr.join(',')).join('\r\n');
   }
 
-  // This was just to test, will be changed to a Bill object
   async dataArrays() {
-    return VoteResult.all().then((results) =>
-      results.map((result) => [result.id, result.vote_type])
-    );
+    const bills = await Bill.all();
+    const promises_array = bills.map((bill) => this.billArray(bill));
+    return Promise.all(promises_array).then(bills => { return bills });
+  }
+
+  async billArray(bill) {
+    const sponsor_name = await bill.primary_sponsor();
+    return [bill.id, bill.title, sponsor_name];
   }
 }
 
