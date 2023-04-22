@@ -1,9 +1,9 @@
+import ApplicationExporter from "./application-exporter.js";
 import Bill from "../model/bill.js";
-import fs from "fs";
 
-class BillsExporter {
+class BillsExporter extends ApplicationExporter {
   constructor(filename) {
-    this.filename = filename;
+    super(filename);
     this.header = [
       "id",
       "title",
@@ -11,23 +11,6 @@ class BillsExporter {
       "opposer_count",
       "primary_sponsor",
     ];
-  }
-
-  execute() {
-    this.convertToCSV().then((csv_string) =>
-      fs.writeFile(this.filename, csv_string, (error) => {
-        if (error) console.error(error);
-        else console.log(`${this.filename} exported successfully`);
-      })
-    );
-  }
-
-  async convertToCSV() {
-    const arrays = await this.dataArrays();
-    return [this.header]
-      .concat(arrays)
-      .map((arr) => arr.join(","))
-      .join("\r\n");
   }
 
   async dataArrays() {
