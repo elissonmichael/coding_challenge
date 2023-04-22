@@ -3,7 +3,7 @@ import ApplicationModel from "./application_model.js";
 export default class VoteResult extends ApplicationModel {
   static filename = "vote_results";
 
-  static all() {
+  static async all() {
     return this.read().then((array) =>
       array.map(
         (row) => new this(row.id, row.legislator_id, row.vote_id, row.vote_type)
