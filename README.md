@@ -1,11 +1,16 @@
 ## Coding Challenge
 
-I made this to try to help a friend, using ruby `3.0.5p211`.
+I made this to try to help a friend, using ruby `3.0.5` or node `18.16.0`.
 
 After installing ruby, run: 
 
 - `ruby services/legislator-votes-exporter.rb`
 - `ruby services/legislator-bills-exporter.rb`
+
+Or after installing node, run: 
+
+- `node services/legislator-votes-exporter.js`
+- `node services/legislator-bills-exporter.js`
 
 ## Overview
 
