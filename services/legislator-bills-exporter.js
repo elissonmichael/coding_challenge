@@ -4,7 +4,7 @@ import fs from "fs";
 class BillsExporter {
   constructor(filename) {
     this.filename = filename;
-    this.header = ["id", "title", "primary_sponsor"];
+    this.header = ["id", "title", "supporter_count", "opposer_count", "primary_sponsor"];
   }
 
   execute() {
@@ -29,7 +29,9 @@ class BillsExporter {
 
   async billArray(bill) {
     const sponsor_name = await bill.primary_sponsor();
-    return [bill.id, bill.title, sponsor_name];
+    const supports = await bill.supports();
+    const oppositions = await bill.oppositions();
+    return [bill.id, bill.title, supports.length, oppositions.length, sponsor_name];
   }
 }
 

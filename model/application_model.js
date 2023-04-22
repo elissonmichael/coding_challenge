@@ -7,9 +7,8 @@ export default class ApplicationModel {
     return await parser(csv_file);
   }
 
-  static find(id) {
-    return this.all().then((array) =>
-      array.find((resource) => resource.id === id)
-    );
+  static async find(id) {
+    const resources = await this.all();
+    return resources.find((resource) => resource.id === id);
   }
 }
