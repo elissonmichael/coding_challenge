@@ -17,8 +17,7 @@ export default class Vote extends ApplicationModel {
   }
 
   async results() {
-    const all_results = await VoteResult.all();
-    return all_results.filter((result) => result.vote_id === this.id);
+    return await VoteResult.filter_by('vote_id', this.id);
   }
 
   async supports() {

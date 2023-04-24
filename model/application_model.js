@@ -11,4 +11,14 @@ export default class ApplicationModel {
     const resources = await this.all();
     return resources.find((resource) => resource.id === id);
   }
+
+  static async find_by(column, value) {
+    const resources = await this.all();
+    return resources.find((resource) => resource[column] === value);
+  }
+
+  static async filter_by(column, value) {
+    const resources = await this.all();
+    return resources.filter((resource) => resource[column] === value);
+  }
 }

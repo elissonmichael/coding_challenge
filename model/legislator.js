@@ -17,8 +17,7 @@ export default class Legislator extends ApplicationModel {
   }
 
   async results() {
-    const all_results = await VoteResult.all();
-    return all_results.filter((result) => result.legislator_id === this.id);
+    return await VoteResult.filter_by('legislator_id', this.id);
   }
 
   async supports() {

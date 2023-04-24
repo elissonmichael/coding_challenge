@@ -19,8 +19,7 @@ export default class Bill extends ApplicationModel {
   }
 
   async vote() {
-    const votes = await Vote.all();
-    return votes.find((vote) => vote.bill_id === this.id);
+    return await Vote.find_by('bill_id', this.id);
   }
 
   async supports() {
